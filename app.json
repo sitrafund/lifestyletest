@@ -1,0 +1,23 @@
+{
+    "name": "lifestyletest",
+    "scripts": {},
+    "env": {
+        "MONGOHQ_URL": {
+            "required": true
+        },
+        "NODE_ENV": {
+            "required": true
+        }
+    },
+    "formation": {
+        "web": {
+            "quantity": 1
+        }
+    },
+    "addons": [],
+    "buildpacks": [
+        {
+            "url": "heroku/nodejs"
+        }
+    ]
+}

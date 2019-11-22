@@ -1,0 +1,350 @@
+@import '../../styles/_variables.scss';
+@import '../../styles/_mixins.scss';
+@import '../../styles/_common.scss';
+
+.full-height {
+  height: 100%;
+}
+/* -----------------------------------------------------------------------------
+------------------------------------ HEADER ------------------------------------
+----------------------------------------------------------------------------- */
+.header {
+  height: 120px;
+  display: block;
+  @include breakpoint(mobile) {
+    position: relative;
+    height: 45px;
+    border-bottom: 1px solid #d6d6d6;
+  }
+}
+
+.category-icons {
+  height: 100%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  max-width: 1115px;
+  width: 85%;
+  @include breakpoint(mobile) {
+    width: 100%;
+    display: block;
+  }
+}
+
+.hidden {
+  display: none;
+}
+
+.category {
+  width: 64px;
+  margin: 0 15px;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  @include breakpoint(mobile) {
+    display: none;
+  }
+  @include breakpoint(desktop) {
+    margin: 0 30px;
+  }
+}
+
+.category-spacer {
+  width: 100%;
+  flex: 1;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  @include breakpoint(mobile) {
+    display: none;
+  }
+}
+
+.active {
+  font-weight: bold;
+  color: black;
+  @include breakpoint(mobile) {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-flow: row;
+  }
+}
+
+.category__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  margin: 10px auto;
+  width: 42px;
+  min-width: 42px;
+  height: 42px;
+  min-height: 42px;
+
+  img {
+    width: 27.5625px;
+    height: 27.5625px;
+  }
+  @include breakpoint(desktop) {
+    width: 64px;
+    min-width: 64px;
+    height: 64px;
+    min-height: 64px;
+
+    img {
+      width: 40px;
+      height: 40px;
+    }
+  }
+  @include breakpoint(mobile) {
+    width: 30px;
+    min-width: 30px;
+    height: 30px;
+    min-height: 30px;
+    margin: 0 10px 0 0;
+
+    img {
+      width: 20px;
+      height: 20px;
+    }
+  }
+}
+
+.category__icon-spacer {
+  width: 100%;
+  margin: 10px auto;
+  height: 42px;
+  @include breakpoint(desktop) {
+    height: 64px;
+  }
+}
+
+.category__icon-spacer-line {
+  height: 50%;
+  border-bottom: 1px solid #d6d6d6;
+}
+
+.category__title {
+  margin: 0 -100%;
+  text-align: center;
+
+  h5 {
+    margin: 0;
+  }
+  @include breakpoint(mobile) {
+    float: left;
+    margin: 0;
+
+    h5 {
+      margin: 0;
+    }
+  }
+}
+
+.category__title-spacer {
+  h5 {
+    margin: 0;
+  }
+}
+/* -----------------------------------------------------------------------------
+------------------------------------ BODY --------------------------------------
+----------------------------------------------------------------------------- */
+.body {
+  display: flex;
+  justify-content: center;
+  flex-flow: column;
+  height: auto;
+  min-height: calc(100vh - 200px - 120px - 70px);
+  @include breakpoint(mobile) {
+    min-height: calc(100vh - 60px - 45px - 50px);
+  }
+  @include breakpoint(tablet) {
+    min-height: calc(100vh - 80px - 120px - 100px);
+  }
+  @include breakpoint(laptop) {
+    min-height: calc(100vh - 120px - 120px - 70px);
+  }
+  @include breakpoint(desktop) {
+    min-height: calc(100vh - 160px - 120px - 70px);
+  }
+}
+
+/* -----------------------------------------------------------------------------
+------------------------------------ FOOTER ------------------------------------
+----------------------------------------------------------------------------- */
+.footer {
+  display: flex;
+  justify-content: space-around;
+  flex-flow: column;
+  height: 70px;
+  @include breakpoint(mobile) {
+    height: 50px;
+  }
+  @include breakpoint(tablet) {
+    height: 100px;
+  }
+}
+
+.footer__row {
+  width: 90%;
+  max-width: 700px;
+  margin: 0 auto;
+  display: flex;
+  align-items: flex-start;
+  @include breakpoint(laptop) {
+    width: 100%;
+    max-width: 100%;
+  }
+  @include breakpoint(desktop) {
+    width: 100%;
+    max-width: 100%;
+  }
+  @include breakpoint(desktop) {
+    width: 100%;
+    max-width: 100%;
+  }
+}
+
+.footer__row {
+  display: flex;
+  align-items: flex-start;
+  width: 100%;
+  max-width: 100%;
+  @include breakpoint(mobile) {
+    width: 90%;
+    margin: 0 auto;
+  }
+  @include breakpoint(tablet) {
+    width: 90%;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+}
+
+.footer__row + .footer__row {
+  @include breakpoint(desktop) {
+    justify-content: center;
+  }
+}
+
+.button-chart-container {
+  width: 100%;
+  margin: 10px auto;
+}
+
+.button-container {
+  width: calc((100% - 700px) / 2);
+  text-align: center;
+  @include breakpoint(mobile) {
+    display: none;
+  }
+  @include breakpoint(tablet) {
+    display: none;
+  }
+}
+
+.button-container__tablet {
+  display: none;
+  @include breakpoint(tablet) {
+    display: inline-block;
+  }
+  position: absolute;
+}
+
+.chart-container,
+.total-counter-container {
+  width: 90%;
+  height: 25px;
+  @include breakpoint(mobile) {
+    width: 100%;
+    margin: 0 auto;
+    float: none;
+  }
+  @include breakpoint(tablet) {
+    width: 100%;
+    margin: 0 auto;
+    float: none;
+  }
+}
+
+.chart-container {
+  max-width: 700px;
+}
+
+.total-counter-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+
+  h4 {
+    margin: 0;
+  }
+  @include breakpoint(desktop) {
+    width: 100vw;
+  }
+}
+
+.total-counter {
+  margin-bottom: 10px;
+
+  h4 {
+    text-align: center;
+    margin: 0;
+    font-size: 16px;
+  }
+}
+
+.btn-back-mobile {
+  position: absolute;
+  left: 0;
+  border: none;
+  height: 100%;
+  padding: 4px 16px;
+  display: none;
+  @include breakpoint(mobile) {
+    display: flex;
+  }
+}
+
+.btn-back {
+  height: 25px;
+  padding: 0;
+  margin: 0 auto;
+  border: none;
+  display: flex;
+  align-items: center;
+
+  span {
+    line-height: 1;
+    margin-left: 17px;
+  }
+}
+
+.green {
+  background-color: #e0f4d0;
+}
+
+.blue {
+  background-color: #d7f2fa;
+}
+
+.yellow {
+  background-color: #ffef7f;
+}
+
+.orange {
+  background-color: #ffead3;
+}
+
+.grey {
+  background-color: #f0f0f0;
+
+  img {
+    opacity: 0.5;
+  }
+}

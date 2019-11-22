@@ -1,0 +1,23 @@
+<div class="chart">
+  <div class="chart__bar" (clickOutside)="toggleTooltip()">
+    <ng-container *ngFor="let it of iterations; index as i">
+      <div
+        *ngIf="values[i]"
+        class="bar bar-animation {{ values[i].color }} {{ 'border-' + values[i].color }}"
+        [ngClass]="{
+          hover: values[i].name === currentHover,
+          'hide-right-border': values[i + 1] && values[i + 1].value > 0
+        }"
+        [class.visible]="values[i].value > 0"
+        [style.width]="values[i].width"
+        (click)="toggleTooltip(values[i].name)"
+      >
+        <img *ngIf="values[i].icon" [src]="'/assets/images/' + values[i].icon" alt="Kategoria" />
+        <span
+          >{{ values[i].name[translate.currentLang] }}<br />{{ values[i].value | roundUp | thousandSeparator }} kg
+          CO₂e</span
+        >
+      </div>
+    </ng-container>
+  </div>
+</div>

@@ -1,0 +1,114 @@
+@import '../../styles/_variables.scss';
+
+.chart {
+  width: 100%;
+  height: 100%;
+}
+
+.chart__bar {
+  height: 100%;
+  text-align: left;
+  position: relative;
+}
+
+.bar {
+  height: 100%;
+  width: 0;
+  position: relative;
+  float: left;
+  opacity: 0;
+  border: 0 none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  img {
+    height: 50%;
+    width: 100%;
+  }
+}
+
+.bar-animation {
+  -webkit-transition: width 1s ease-in-out, opacity 0.1s linear;
+  -moz-transition: width 1s ease-in-out, opacity 0.1s linear;
+  -o-transition: width 1s ease-in-out, opacity 0.1s linear;
+  transition: width 1s ease-in-out, opacity 0.1s linear;
+}
+
+.visible {
+  opacity: 1;
+}
+
+.bar span {
+  position: absolute;
+  color: black;
+  padding: 5px 10px;
+  background: white;
+  text-align: center;
+  visibility: hidden;
+  border-radius: 3px;
+  opacity: 0;
+  border: 1px solid #d6d6d6;
+  line-height: 1.4;
+  -webkit-transition: opacity 0.2s linear;
+  -moz-transition: opacity 0.2s linear;
+  -o-transition: opacity 0.2s linear;
+  transition: opacity 0.2s linear;
+}
+
+.bar:hover span,
+.hover span {
+  visibility: visible;
+  bottom: 80%;
+  opacity: 1;
+  z-index: 999;
+  white-space: nowrap;
+  box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.1);
+}
+
+.green {
+  background-color: $color-green;
+}
+
+.border-green {
+  border: 1px solid $color-green-secondary;
+  border-right-color: $color-green-secondary !important;
+}
+
+.blue {
+  background-color: $color-blue;
+}
+
+.border-blue {
+  border: 1px solid $color-blue-secondary;
+  border-right-color: $color-blue-secondary !important;
+}
+
+.yellow {
+  background-color: $color-yellow;
+}
+
+.border-yellow {
+  border: 1px solid $color-yellow-secondary;
+  border-right-color: $color-yellow-secondary !important;
+}
+
+.orange {
+  background-color: $color-orange;
+}
+
+.border-orange {
+  border: 1px solid $color-orange-secondary;
+  border-right-color: $color-orange-secondary !important;
+}
+
+.bar {
+  &:last-of-type {
+    border-right-width: 1px;
+    border-right-style: solid;
+  }
+}
+
+.hide-right-border {
+  border-right: hidden;
+}

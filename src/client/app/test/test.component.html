@@ -1,0 +1,68 @@
+<div class="full-height">
+  <div class="header" *ngIf="result && result.categoryCO2e.length > 0">
+    <button class="btn-back-mobile" (click)="goToPreviousQuestion()">
+      <img src="/assets/images/btn-arrow-left.svg" alt="Nuoli vasemmalle" />
+    </button>
+    <div class="category-icons" [ngClass]="{ hidden: currentQuestion === undefined }">
+      <ng-container *ngFor="let categoryCO2e of result.categoryCO2e; let last = last">
+        <div class="category" [ngClass]="{ active: categoryCO2e.category._id === currentCategory._id }">
+          <div
+            class="category__icon"
+            [ngClass]="
+              categoryCO2e.co2e > 0 ||
+              categoryCO2e.category._id === currentCategory._id ||
+              categoryCO2e.category.index < currentCategory.index
+                ? categoryCO2e.category.color
+                : 'grey'
+            "
+          >
+            <img [src]="'/assets/images/' + categoryCO2e.category.icon" alt="Kategoria" />
+          </div>
+          <div class="category__title">
+            <h5 class="smallcaps" [ngClass]="{ active: categoryCO2e.category._id === currentCategory._id }">
+              {{ categoryCO2e.category.title[translate.currentLang] }}
+            </h5>
+          </div>
+        </div>
+
+        <div class="category-spacer" *ngIf="!last">
+          <div class="category__icon-spacer"><div class="category__icon-spacer-line"></div></div>
+          <div class="category__title-spacer"><h5 class="smallcaps">&nbsp;</h5></div>
+        </div>
+      </ng-container>
+      <div class="clear"></div>
+    </div>
+  </div>
+
+  <div class="body">
+    <div class="body-wrapper"><app-category *ngIf="currentCategory"></app-category></div>
+  </div>
+
+  <div class="footer">
+    <div class="footer__row">
+      <div class="button-container">
+        <button class="btn-back" (click)="goToPreviousQuestion()">
+          <img src="/assets/images/btn-arrow-left.svg" /> <span>{{ 'BACK' | translate }}</span>
+        </button>
+      </div>
+      <div class="chart-container"><app-chart *ngIf="chartData" [values]="chartData"></app-chart></div>
+    </div>
+
+    <div class="footer__row">
+      <div class="button-container__tablet">
+        <button class="btn-back" (click)="goToPreviousQuestion()">
+          <img src="/assets/images/btn-arrow-left.svg" /> <span>{{ 'BACK' | translate }}</span>
+        </button>
+      </div>
+      <div class="total-counter-container">
+        <h4 *ngIf="result && result.co2e" class="smallcaps">
+          <span style="font-size: 12px">{{ 'YOUR_FOOTPRINT' | translate }}:</span>
+          <span class="number__container" style="color: black; font-weight:bold; font-size: 16px">{{
+            result.co2e | roundUp | thousandSeparator
+          }}</span>
+          <span style="color: black; text-transform: none; font-size: 12px">kg CO₂e</span>
+        </h4>
+      </div>
+    </div>
+  </div>
+</div>

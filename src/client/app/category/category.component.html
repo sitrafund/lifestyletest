@@ -1,0 +1,29 @@
+<div class="category-container">
+  <app-question *ngIf="question; else endOfCategory" [@fadeOut]="animationState"> </app-question>
+  <ng-template #endOfCategory>
+    <div class="category-end" [@fade]="animationState">
+      <div class="category__icon {{ category.color }}">
+        <img [src]="'/assets/images/' + category.icon" alt="Kategoria" />
+      </div>
+      <div class="category__title">
+        <h2>{{ category.title[translate.currentLang] }}</h2>
+      </div>
+      <div class="category__end-info">
+        <p *ngIf="showPositive">
+          {{ category.endInfoPositive[translate.currentLang] }} <br />
+          {{ category.endInfoCommon[translate.currentLang] }}
+        </p>
+        <p *ngIf="showNegative">
+          {{ category.endInfoNegative[translate.currentLang] }} <br />
+          {{ category.endInfoCommon[translate.currentLang] }}
+        </p>
+      </div>
+      <div class="category__button" *ngIf="category.index !== 4">
+        <button type="button" class="btn" (click)="saveCategory()">{{ 'CONTINUE' | translate }}</button>
+      </div>
+      <div class="category__button" *ngIf="category.index === 4">
+        <button type="button" class="btn" (click)="saveCategory()">{{ 'SHOW_RESULTS' | translate }}</button>
+      </div>
+    </div>
+  </ng-template>
+</div>

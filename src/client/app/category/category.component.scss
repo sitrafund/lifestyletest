@@ -1,0 +1,62 @@
+@import '../../styles/_variables.scss';
+@import '../../styles/_mixins.scss';
+@import '../../styles/_common.scss';
+
+:host {
+  display: block;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.category-container {
+  min-height: 373px;
+}
+
+.category-end {
+  margin: 0 auto;
+  padding: 0;
+  width: 90%;
+  max-width: 700px;
+  margin-top: -120px;
+  @include breakpoint(mobile) {
+    margin-top: -45px;
+  }
+}
+
+.category__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  margin: 2em auto;
+  width: 90px;
+  min-width: 90px;
+  height: 90px;
+  min-height: 90px;
+
+  img {
+    width: 60px;
+    height: 60px;
+  }
+}
+
+.category__end-info {
+  margin-bottom: 2em;
+  font-weight: 300;
+}
+
+.green {
+  background-color: #e0f4d0;
+}
+
+.blue {
+  background-color: #d7f2fa;
+}
+
+.yellow {
+  background-color: #ffef7f;
+}
+
+.orange {
+  background-color: #ffead3;
+}

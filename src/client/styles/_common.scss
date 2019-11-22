@@ -1,0 +1,36 @@
+.full-height {
+  display: block;
+  width: 100%;
+  background-color: white;
+  @include breakpoint(mobile) {
+    height: calc(100vh - 60px);
+    min-height: calc(100vh - 60px);
+  }
+  @include breakpoint(tablet) {
+    height: calc(100vh - 80px);
+    min-height: calc(100vh - 80px);
+  }
+  @include breakpoint(laptop) {
+    height: calc(100vh - 120px);
+    min-height: calc(100vh - 120px);
+  }
+  @include breakpoint(desktop) {
+    height: calc(100vh - 160px);
+    min-height: calc(100vh - 160px);
+  }
+  @include breakpoint(bigscreen) {
+    height: calc(100vh - 200px);
+    min-height: calc(100vh - 200px);
+  }
+}
+
+// Should be added to really fill the whole height if in iframe
+.full-height-iframe {
+  height: 100vh !important;
+  min-height: 100vh !important;
+  overflow-y: hidden;
+}
+
+.number__container {
+  display: inline-block;
+}

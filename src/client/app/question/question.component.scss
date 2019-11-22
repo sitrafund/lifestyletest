@@ -1,0 +1,83 @@
+@import '../../styles/_variables.scss';
+
+.focus {
+  width: 0;
+  height: 0;
+}
+
+.question__progress {
+  h4 {
+    text-align: center;
+    font-size: 16px;
+  }
+}
+
+.question__title {
+  width: 90%;
+  max-width: 880px;
+  margin: 0 auto;
+  order: 0;
+}
+
+.btn-group {
+  margin: 0 auto;
+  padding: 0;
+  border-radius: 3px;
+  box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.2);
+  width: 90%;
+  max-width: 700px;
+}
+
+.btn-group__btn {
+  display: block;
+  width: 100%;
+  height: 54px;
+  background-color: white;
+  border: 1px solid #d6d6d6;
+  border-bottom: 1px solid transparent;
+
+  &:first-of-type {
+    border-radius: 3px 3px 0 0;
+  }
+
+  &:last-of-type {
+    border-bottom: 1px solid #d6d6d6;
+    border-radius: 0 0 3px 3px;
+  }
+}
+
+.green:active,
+.green:focus,
+.green:hover {
+  outline: none !important;
+  background-color: $color-green;
+  border-color: $color-green-secondary;
+  border-bottom: 1px solid $color-green-secondary;
+}
+
+.blue:active,
+.blue:focus,
+.blue:hover {
+  outline: none !important;
+  background-color: $color-blue;
+  border-color: $color-blue-secondary;
+  border-bottom: 1px solid $color-blue-secondary;
+}
+
+.yellow:active,
+.yellow:focus,
+.yellow:hover {
+  outline: none !important;
+  background-color: $color-yellow;
+  border-color: $color-yellow-secondary;
+  border-bottom: 1px solid $color-yellow-secondary;
+}
+
+.orange:active,
+.orange:focus,
+.orange:hover {
+  outline: none !important;
+  background-color: $color-orange;
+  border-color: $color-orange-secondary;
+  border-bottom: 1px solid $color-orange-secondary;
+}

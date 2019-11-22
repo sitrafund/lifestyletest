@@ -1,0 +1,84 @@
+<div class="container">
+  <div class="heading-component">
+    <div class="heading-container bp0-med-padding">
+      <h1>{{ 'TIPS_HEADING' | translate }}</h1>
+      <p class="heading__text">{{ 'TIPS_INTRO' | translate }}</p>
+
+      <div class="archive__post-count-container">
+        <span class="archive__post-count">{{ tips.length }}</span>
+        <span class="archive__post-count-label">{{ 'TIPS' | translate }}</span>
+      </div>
+    </div>
+    <div class="mozaik__predefined-filters bp0-med-padding">
+      <div>
+        <ul class="archive__selected-filters mozaik__predefined-filters">
+          <li *ngFor="let tag of tags">
+            <button
+              class="mozaik__filter"
+              [ngClass]="{ active: tagFilter === tag[translate.currentLang] }"
+              (click)="filterByTag(tag[translate.currentLang])"
+            >
+              {{ tag[translate.currentLang] }}
+            </button>
+          </li>
+          <li>
+            <button class="mozaik__filter" [ngClass]="{ active: tagFilter === undefined }" (click)="filterByTag()">
+              {{ 'SHOW_ALL' | translate }}
+            </button>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <div class="smallcaps mozaik__filter-label">{{ 'ENVIRONMENT_EFFECT' | translate }}</div>
+        <ul class="archive__selected-filters mozaik__predefined-filters">
+          <li *ngFor="let environmentEffect of environmentEffects">
+            <button
+              class="mozaik__filter environment_effect {{ environmentEffect.fi }}"
+              (click)="filterByEnvironmentEffect(environmentEffect[translate.currentLang])"
+              [ngClass]="{ active: environmentEffectFilter === environmentEffect[translate.currentLang] }"
+            >
+              {{ environmentEffect[translate.currentLang] }}
+            </button>
+          </li>
+          <li>
+            <button
+              class="mozaik__filter"
+              [ngClass]="{ active: environmentEffectFilter === undefined }"
+              (click)="filterByEnvironmentEffect()"
+            >
+              {{ 'SHOW_ALL' | translate }}
+            </button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="mozaik-grid grid-wrap" *ngIf="tips">
+    <div
+      class="grid-col v-fo-full bp2-col-one-half bp4-col-one-third bp5-col-one-quarter"
+      *ngFor="let tip of tips | filter: tagFilter | filter: environmentEffectFilter | sortByCategory: worstCategory"
+    >
+      <a [href]="tip.url[translate.currentLang]" class="mozaik__item__link">
+        <div class="plara-template plara-template__case aspect-ratio-portrait">
+          <img
+            class="plara-template__environment-effect-icon"
+            src="https://www.sitra.fi/app/themes/sitra/assets/images/icon-{{ tip.environmentEffect.fi }}vaikutus.svg"
+            alt="Ympäristövaikutus"
+          />
+          <div class="plara-template__content-container">
+            <div class="plara-template__vinjet-container">
+              <span class="vinjet vinjet-solid vinjet-no-hover"> {{ tip.tag[translate.currentLang] }} </span>
+            </div>
+            <h3 class="plara-template__heading plara__text">{{ tip.title[translate.currentLang] }}</h3>
+          </div>
+          <div
+            class="plara-image__container aspect-ratio-portrait"
+            [ngStyle]="{ 'background-image': 'url(' + tip.images + ')' }"
+          ></div>
+          <div class="plara-template__image-mask"></div>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>

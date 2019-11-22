@@ -1,0 +1,36 @@
+<div class="banner full-height" [ngClass]="{ 'full-height-iframe': inIframe }">
+  <div class="banner-container bp0-med-padding">
+    <div class="banner-contents">
+      <div class="banner__heading">
+        <img src="{{ 'INTRO_IMAGE' | translate }}" alt="Testaa, oletko uhka vai mahdollisuus?" />
+      </div>
+      <div class="banner__text ingress">
+        <p>{{ 'INTRO' | translate }}</p>
+      </div>
+      <div class="banner__button">
+        <a type="button" class="btn" routerLink="{{ 'TEST_URL' | translate }}" *ngIf="!inIframe">{{
+          'BEGIN' | translate
+        }}</a>
+        <a type="button" class="btn" href="{{ 'TEST_URL' | translate }}" *ngIf="inIframe">{{ 'BEGIN' | translate }}</a>
+      </div>
+      <div class="banner__details">
+        <p *ngIf="averages">
+          <span class="number__container">{{ 'DONE' | translate: { count: averages.count | thousandSeparator } }}</span>
+          <strong class="number__container">{{ averages.average | roundUp | thousandSeparator }}</strong> kg CO₂e
+        </p>
+      </div>
+      <div class="banner__chart"><app-chart [values]="chartData" *ngIf="averages"></app-chart></div>
+      <div class="banner__details">
+        <small>{{ 'DMAT' | translate }}</small> <br />
+        <small>{{ 'UPDATED' | translate }}</small> <br />
+        <small class="banner__license" [innerHTML]="'LICENSE' | translate"></small>
+        <small class="banner__license" [innerHTML]="'LICENSE-2' | translate"></small>
+        <small class="banner__license">
+          <a [href]="'CALCULATIONS_URL' | translate" target="_blank">
+            <span>{{ 'CALCULATIONS_TEXT' | translate }}</span>
+          </a>
+        </small>
+      </div>
+    </div>
+  </div>
+</div>

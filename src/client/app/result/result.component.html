@@ -1,0 +1,92 @@
+<div class="banner {{ bestCategory.color }}" *ngIf="bestCategory" [ngClass]="{ hidden: !isBrowser }">
+  <div class="selite-container bp0-med-padding banner-container">
+    <div class="selite-contents banner-contents">
+      <div class="banner__image"><img [src]="'/assets/images/' + bestCategory.resultInfo.image" alt="Tulos" /></div>
+      <div class="banner__heading"><h1 [innerHTML]="bestCategory.resultInfo.title[translate.currentLang]"></h1></div>
+      <div class="banner__text">
+        <p>{{ bestCategory.resultInfo.positiveDescription[translate.currentLang] }}</p>
+        <p *ngIf="worstCategory">{{ worstCategory.resultInfo.negativeDescription[translate.currentLang] }}</p>
+        <p *ngIf="bestCategory.index !== 0">{{ 'RESULT_COMMON' | translate }}</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container result-container bp0-med-padding" *ngIf="result" [ngClass]="{ hidden: !isBrowser }">
+  <div class="result" *ngIf="resultChart.length > 0">
+    <div class="ingress">{{ 'YOUR_FOOTPRINT' | translate }}</div>
+    <div class="share-count__number" style="display:inline-block">
+      {{ this.result.co2e | roundUp | thousandSeparator }}
+    </div>
+    <div class="ingress" style="display:inline-block">kg CO₂e</div>
+    <div class="chart-container">
+      <app-chart [values]="resultChart" [minScale]="minScale" *ngIf="resultChart.length > 0"></app-chart>
+    </div>
+  </div>
+  <div class="result" *ngIf="averageChart.length > 0">
+    <div class="ingress">{{ 'AVERAGE_FOOTPRINT' | translate }}</div>
+    <div class="share-count__number" style="display:inline-block" *ngIf="averageTotal">
+      {{ averageTotal | roundUp | thousandSeparator }}
+    </div>
+    <div class="ingress" style="display:inline-block">kg CO₂e</div>
+    <div class="chart-container">
+      <app-chart [values]="averageChart" [minScale]="minScale" *ngIf="averageChart.length > 0"></app-chart>
+    </div>
+  </div>
+  <div class="chart-legend">
+    <ng-container *ngFor="let category of result.categoryCO2e; let i = index">
+      <div class="category-wrapper">
+        <div class="category">
+          <div class="circle {{ category.category.color }} {{ 'border-' + category.category.color }}"></div>
+          <span class="chart-legend__title">{{ category.category.title[translate.currentLang] }}</span>
+        </div>
+      </div>
+      <br class="visible-mobile visible-tablet" *ngIf="i === 1" />
+    </ng-container>
+  </div>
+  <div class="banner__details banner__graph">
+    <p>
+      <a [href]="'GRAPH_URL' | translate" target="_blank">{{ 'GRAPH_TEXT' | translate }}</a>
+    </p>
+  </div>
+  <div class="banner__details banner__graph">
+    <p>
+      <a [href]="'CALCULATIONS_URL' | translate" target="_blank">{{ 'CALCULATIONS_TEXT' | translate }}</a>
+    </p>
+  </div>
+  <div class="banner__details">
+    <h4 class="smallcaps">{{ 'SHARE_YOUR_RESULT' | translate }}</h4>
+  </div>
+  <div class="banner__buttons">
+    <div class="banner__button-container">
+      <a class="btn btn__has-icon icon-facebook btn__social-media-share" target="_blank" [href]="facebookUrl"></a>
+    </div>
+    <div class="banner__button-container">
+      <a class="btn btn__has-icon icon-twitter btn__social-media-share" target="_blank" [href]="twitterUrl"></a>
+    </div>
+    <div class="banner__button-container">
+      <a class="btn btn__has-icon icon-linkedin btn__social-media-share" target="_blank" [href]="linkedinUrl"></a>
+    </div>
+    <div class="banner__button-container">
+      <a class="btn btn__has-icon icon-email btn__social-media-share" target="_blank" [href]="mailtoUrl"></a>
+    </div>
+  </div>
+  <div class="banner__details">
+    <p>
+      <a (click)="goToHomePage()">{{ 'START_OVER' | translate }}</a>
+    </p>
+  </div>
+</div>
+
+<app-tip
+  *ngIf="tips.length > 0"
+  [tips]="tips"
+  [worstCategory]="worstCategory"
+  [ngClass]="{ hidden: !isBrowser }"
+></app-tip>
+
+<div class="container bp0-med-padding" [ngClass]="{ hidden: !isBrowser }">
+  <div class="link-container">
+    <a class="btn" href="{{ 'SMART_WAYS_URL' | translate }}">{{ 'SHOW_ALL_SMART_WAYS' | translate }}</a>
+  </div>
+</div>

@@ -1,0 +1,65 @@
+@import '../../styles/_variables.scss';
+@import '../../styles/_mixins.scss';
+@import '../../styles/_common.scss';
+
+.banner {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f7f7f7;
+  background-image: url('/assets/images/bg-left.png'),
+    url('/assets/images/bg-right-up.png'),
+    url('/assets/images/bg-right-bottom.png');
+  background-repeat: no-repeat, no-repeat, no-repeat;
+  background-position: bottom left, top right, bottom right;
+  background-size: 20% auto, 20% auto, 20% auto;
+  @include breakpoint(mobile) {
+    background-image: url('/assets/images/bg-mobile.png');
+    background-position: center;
+    background-size: cover;
+  }
+}
+
+.banner-container {
+  max-width: 1600px;
+}
+
+.banner-contents {
+  padding-top: 64px;
+  padding-bottom: 64px;
+  margin: 0 auto;
+  text-align: center;
+  font-family: 'RationalText';
+  font-weight: 300;
+  max-width: 747px;
+}
+
+.banner__heading {
+  margin-bottom: 30px;
+}
+
+.banner__text {
+  margin-bottom: 30px;
+}
+
+.banner__button {
+  margin-bottom: 45px;
+}
+
+.banner__details {
+  margin-bottom: 25px;
+}
+
+.banner__license {
+  display: block;
+  margin-top: 10px;
+}
+
+.banner__chart {
+  margin-bottom: 30px;
+  height: 50px;
+  @include breakpoint(mobile) {
+    height: 40px;
+  }
+}

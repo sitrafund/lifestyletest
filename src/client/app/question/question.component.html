@@ -1,0 +1,22 @@
+<div class="" style="padding-bottom: 30px;" [@slide]="animationState" *ngIf="question">
+  <div class="question__progress">
+    <h4 class="smallcaps">{{ question.index }}/{{ questionCount }}</h4>
+  </div>
+  <div class="question__title">
+    <h2>{{ question.title[translate.currentLang] }}</h2>
+  </div>
+  <div class="focus" id="focus" tabindex="0"></div>
+  <div class="btn-group">
+    <ng-container *ngFor="let answer of question.answers | sortByIndex">
+      <button
+        class="btn-group__btn"
+        type="button"
+        (click)="saveAnswer(answer)"
+        [ngClass]="category.color"
+        [disabled]="answerClicked"
+      >
+        {{ answer.title[translate.currentLang] }}
+      </button>
+    </ng-container>
+  </div>
+</div>
