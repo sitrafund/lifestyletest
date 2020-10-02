@@ -1,45 +1,45 @@
+import { APP_BASE_HREF } from '@angular/common';
 import { enableProdMode, InjectionToken } from '@angular/core';
 import { ngExpressEngine } from '@nguniversal/express-engine';
-import { provideModuleMap } from '@nguniversal/module-map-ngfactory-loader';
 import * as express from 'express';
-import { Request, Response } from 'express';
-import * as path from 'path';
-import 'reflect-metadata';
+import { existsSync } from 'fs';
+import { join } from 'path';
 import 'zone.js/dist/zone-node';
-
-export const REQUEST = new InjectionToken<Request>('REQUEST');
-export const RESPONSE = new InjectionToken<Response>('RESPONSE');
+import { AppServerModule } from '../client/main.server';
 
 enableProdMode();
 
-const DIST_FOLDER = path.join(process.cwd(), 'dist');
+const distFolder = join(process.cwd(), 'dist/public');
+const indexHtml = existsSync(join(distFolder, 'index.original.html'))
+  ? 'index.original.html'
+  : 'index';
 
-export function universal(app) {
-  const {
-    AppServerModuleNgFactory,
-    LAZY_MODULE_MAP,
-  } = require('../../dist/server/main');
-
-  app.engine('html', (_, options, callback) => {
+export function universal(app: express.Express) {
+  app.engine('html', (path, options: any, callback) => {
     ngExpressEngine({
-      bootstrap: AppServerModuleNgFactory,
+      bootstrap: AppServerModule,
       providers: [
-        provideModuleMap(LAZY_MODULE_MAP),
         { provide: 'request', useFactory: () => options.req, deps: [] },
       ],
-    })(_, options, callback);
+    })(path, options, callback);
   });
 
   app.set('view engine', 'html');
-  app.set('views', path.join(DIST_FOLDER, 'public'));
+  app.set('views', distFolder);
 
-  app.get('*.*', express.static(path.join(DIST_FOLDER, 'public')));
+  app.get(
+    '*.*',
+    express.static(distFolder, {
+      maxAge: '1y',
+    }),
+  );
 
   app.get('*', (req, res) => {
-    res.render(path.join(DIST_FOLDER, 'public', 'index.html'), {
+    res.render(indexHtml, {
       req,
       res,
       providers: [
+        { provide: APP_BASE_HREF, useValue: req.baseUrl },
         {
           provide: 'serverUrl',
           useValue: `${req.protocol}://${req.get('host')}`,

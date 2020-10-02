@@ -1,6 +1,5 @@
 import * as dotenv from 'dotenv';
 import * as request from 'request';
-import Tip from '../models/tip';
 
 dotenv.config({ path: '.env' });
 

@@ -263,7 +263,7 @@ const q5as = [
 const q6as = [
   {
     title: {
-      en: 'Regular District Heating',
+      en: 'Regular district heating',
       fi: 'Tavallinen kaukolämpö',
       se: 'Vanlig fjärrvärme',
     },
@@ -274,7 +274,7 @@ const q6as = [
   },
   {
     title: {
-      en: 'Green Distrtict Heating / Wood or pellets',
+      en: 'Green district heating / Wood or pellets',
       fi: 'Vihreä kaukolämpö / Puu tai pelletti',
       se: 'Grön fjärrvärme /Trä eller pellet',
     },

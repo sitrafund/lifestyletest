@@ -1,0 +1,9 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "outDir": "./out-tsc/app-browser",
+    "types": []
+  },
+  "files": ["src/client/main.ts", "src/client/polyfills.ts"],
+  "include": ["src/**/*.d.ts"]
+}

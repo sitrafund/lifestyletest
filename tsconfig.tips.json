@@ -1,0 +1,9 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "outDir": "./dist/tips",
+    "module": "commonjs",
+    "types": ["node"]
+  },
+  "files": ["src/server/helpers/fetch-and-save-tips-from-wp.ts"]
+}

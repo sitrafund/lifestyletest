@@ -1,10 +1,4 @@
-import {
-  Component,
-  Input,
-  OnChanges,
-  OnInit,
-  SimpleChanges,
-} from '@angular/core';
+import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 
 @Component({
@@ -18,12 +12,14 @@ export class ChartComponent implements OnInit, OnChanges {
   public maxValue: number = 0;
   public currentHover: String;
   public iterations: Array<number>;
+  public currentLang: string;
 
-  constructor(public translate: TranslateService) {}
+  constructor(private translate: TranslateService) {}
 
   ngOnInit() {
+    this.currentLang = this.translate.currentLang;
     this.maxValue = 0;
-    this.values.map((value, index) => {
+    this.values.map(value => {
       this.maxValue += value.value;
     }, this);
     this.values.map(value => {
@@ -33,13 +29,13 @@ export class ChartComponent implements OnInit, OnChanges {
     }, this);
   }
 
-  ngOnChanges(changes: SimpleChanges) {
+  ngOnChanges() {
     this.iterations = Array(this.values.length).fill(null);
     if (this.minScale > 0) {
       this.maxValue = this.minScale;
     } else {
       let currentMax = 0;
-      this.values.map((value, index) => {
+      this.values.map(value => {
         currentMax += value.value;
       }, this);
       this.maxValue = 7800 > currentMax ? 7800 : currentMax;

@@ -23,13 +23,25 @@ export class AppComponent implements OnInit {
     private router: Router,
     private injector: Injector,
     private titleService: Title,
-    public translate: TranslateService,
+    private translate: TranslateService,
   ) {
     this.translate.setDefaultLang('fi');
 
     this.translate.onLangChange.subscribe((event: LangChangeEvent) => {
       this.setTitle();
     });
+
+    if (isPlatformServer(this.platformId)) {
+      this.translate.use('fi');
+      const subdomain = this.injector.get('request').headers.host.split('.')[0];
+      if (subdomain === 'elamantapatesti') {
+        this.translate.use('fi');
+      } else if (subdomain === 'lifestyletest') {
+        this.translate.use('en');
+      } else if (subdomain === 'livsstilstest') {
+        this.translate.use('se');
+      }
+    }
 
     // Detect if language is English and change translate.currentLang to affect the whole site
     router.events.subscribe(event => {
@@ -42,6 +54,18 @@ export class AppComponent implements OnInit {
         }
       }
       if (event instanceof NavigationEnd) {
+        if (isPlatformBrowser(this.platformId)) {
+          this.translate.use('fi');
+          const subdomain = document.location.hostname.split('.')[0];
+          if (subdomain === 'elamantapatesti') {
+            this.translate.use('fi');
+          } else if (subdomain === 'lifestyletest') {
+            this.translate.use('en');
+          } else if (subdomain === 'livsstilstest') {
+            this.translate.use('se');
+          }
+        }
+
         if (this.router.routerState.root.firstChild) {
           this.router.routerState.root.firstChild.data.subscribe(data => {
             if (data.language) {
@@ -65,7 +89,7 @@ export class AppComponent implements OnInit {
 
   setTitle() {
     this.translate.get('SHARE.HOME.TITLE').subscribe(translation => {
-      this.titleService.setTitle(translation);
+      this.titleService.setTitle('Sitra ' + translation);
     });
   }
 }

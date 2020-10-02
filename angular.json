@@ -11,10 +11,11 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "aot": true,
             "outputPath": "dist/public",
             "index": "src/client/index.html",
             "main": "src/client/main.ts",
-            "tsConfig": "src/client/tsconfig.app.json",
+            "tsConfig": "tsconfig.app.json",
             "polyfills": "src/client/polyfills.ts",
             "assets": [
               "src/client/assets",
@@ -31,18 +32,16 @@
               }
             ],
             "styles": ["src/client/styles.scss"],
-            "scripts": []
+            "scripts": ["src/gtag.js"]
           },
           "configurations": {
-            "hmr": {
-              "fileReplacements": [
-                {
-                  "replace": "src/client/environments/environment.ts",
-                  "with": "src/client/environments/environment.hmr.ts"
-                }
-              ]
-            },
             "production": {
+              "budgets": [
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb"
+                }
+              ],
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": true,
@@ -65,13 +64,9 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
             "browserTarget": "lifestyletest:build",
-            "hmrWarning": false,
-            "proxyConfig": "./proxy.conf.json"
+            "proxyConfig": "./src/client/proxy.conf.json"
           },
           "configurations": {
-            "hmr": {
-              "browserTarget": "lifestyletest:build:hmr"
-            },
             "production": {
               "browserTarget": "lifestyletest:build:production"
             }
@@ -87,10 +82,10 @@
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
             "main": "src/client/test.ts",
-            "karmaConfig": "./karma.conf.js",
+            "karmaConfig": "./src/client/karma.conf.js",
             "polyfills": "src/client/polyfills.ts",
-            "tsConfig": "src/client/tsconfig.spec.json",
-            "scripts": [],
+            "tsConfig": "tsconfig.spec.json",
+            "scripts": ["src/gtag.js"],
             "styles": ["src/client/styles.scss"],
             "assets": [
               "src/client/assets",
@@ -111,10 +106,7 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": [
-              "src/client/tsconfig.app.json",
-              "src/client/tsconfig.spec.json"
-            ],
+            "tsConfig": ["tsconfig.app.json", "tsconfig.spec.json"],
             "exclude": ["**/node_modules/**/*"]
           }
         },
@@ -122,8 +114,32 @@
           "builder": "@angular-devkit/build-angular:server",
           "options": {
             "outputPath": "dist/server",
-            "main": "src/client/main.server.ts",
-            "tsConfig": "src/client/tsconfig.server.json"
+            "main": "src/server/server.prod.ts",
+            "tsConfig": "tsconfig.server.json"
+          }
+        },
+        "serve-ssr": {
+          "builder": "@nguniversal/builders:ssr-dev-server",
+          "options": {
+            "browserTarget": "lifestyletest:build",
+            "serverTarget": "lifestyletest:server"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "lifestyletest:build:production",
+              "serverTarget": "lifestyletest:server:production"
+            }
+          }
+        },
+        "prerender": {
+          "builder": "@nguniversal/builders:prerender",
+          "options": {
+            "browserTarget": "lifestyletest:build:production",
+            "serverTarget": "lifestyletest:server:production",
+            "routes": ["/"]
+          },
+          "configurations": {
+            "production": {}
           }
         }
       }
@@ -136,7 +152,7 @@
         "e2e": {
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
-            "protractorConfig": "./protractor.conf.js",
+            "protractorConfig": "e2e/protractor.conf.js",
             "devServerTarget": "lifestyletest:serve"
           }
         },
@@ -154,7 +170,7 @@
   "schematics": {
     "@schematics/angular:component": {
       "prefix": "app",
-      "styleext": "scss"
+      "style": "scss"
     },
     "@schematics/angular:directive": {
       "prefix": "app"

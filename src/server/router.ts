@@ -8,7 +8,6 @@ import ResultController from './controllers/result';
 import ExtendedResultController from './controllers/extended-result';
 import ResultCategoryController from './controllers/result-category';
 import TipController from './controllers/tip';
-import NavigationController from './controllers/navigation';
 
 export function router(app) {
   // tslint:disable-next-line:no-shadowed-variable
@@ -22,7 +21,6 @@ export function router(app) {
   const extendedResultController = new ExtendedResultController();
   const resultCategoryController = new ResultCategoryController();
   const tipController = new TipController();
-  const navigationController = new NavigationController();
 
   // answers
   router.route('/answers').get(answerController.getAll);
@@ -82,9 +80,5 @@ export function router(app) {
   router.route('/tip/:id').get(tipController.get);
   router.route('/tip').put(tipController.insert);
   router.route('/tip/:id').post(tipController.update);
-
-  // navigation
-  router.route('/navigation').get(navigationController.getAll);
-
   app.use('/api', router);
 }

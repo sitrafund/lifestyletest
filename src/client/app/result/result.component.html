@@ -1,5 +1,5 @@
 <div class="banner {{ bestCategory.color }}" *ngIf="bestCategory" [ngClass]="{ hidden: !isBrowser }">
-  <div class="selite-container bp0-med-padding banner-container">
+  <div class="selite-container bp0-small-padding banner-container">
     <div class="selite-contents banner-contents">
       <div class="banner__image"><img [src]="'/assets/images/' + bestCategory.resultInfo.image" alt="Tulos" /></div>
       <div class="banner__heading"><h1 [innerHTML]="bestCategory.resultInfo.title[translate.currentLang]"></h1></div>
@@ -12,7 +12,7 @@
   </div>
 </div>
 
-<div class="container result-container bp0-med-padding" *ngIf="result" [ngClass]="{ hidden: !isBrowser }">
+<div class="container result-container bp0-small-padding" *ngIf="result" [ngClass]="{ hidden: !isBrowser }">
   <div class="result" *ngIf="resultChart.length > 0">
     <div class="ingress">{{ 'YOUR_FOOTPRINT' | translate }}</div>
     <div class="share-count__number" style="display:inline-block">
@@ -85,7 +85,7 @@
   [ngClass]="{ hidden: !isBrowser }"
 ></app-tip>
 
-<div class="container bp0-med-padding" [ngClass]="{ hidden: !isBrowser }">
+<div class="container bp0-small-padding" [ngClass]="{ hidden: !isBrowser }">
   <div class="link-container">
     <a class="btn" href="{{ 'SMART_WAYS_URL' | translate }}">{{ 'SHOW_ALL_SMART_WAYS' | translate }}</a>
   </div>

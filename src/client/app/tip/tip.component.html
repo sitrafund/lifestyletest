@@ -1,6 +1,6 @@
 <div class="container">
   <div class="heading-component">
-    <div class="heading-container bp0-med-padding">
+    <div class="heading-container bp0-small-padding">
       <h1>{{ 'TIPS_HEADING' | translate }}</h1>
       <p class="heading__text">{{ 'TIPS_INTRO' | translate }}</p>
 
@@ -9,7 +9,7 @@
         <span class="archive__post-count-label">{{ 'TIPS' | translate }}</span>
       </div>
     </div>
-    <div class="mozaik__predefined-filters bp0-med-padding">
+    <div class="mozaik__predefined-filters bp0-small-padding">
       <div>
         <ul class="archive__selected-filters mozaik__predefined-filters">
           <li *ngFor="let tag of tags">
@@ -54,29 +54,29 @@
     </div>
   </div>
 
-  <div class="mozaik-grid grid-wrap" *ngIf="tips">
+  <div class="mozaik-grid grid-wrap grid-wrap--equal-heights" *ngIf="tips">
     <div
-      class="grid-col v-fo-full bp2-col-one-half bp4-col-one-third bp5-col-one-quarter"
+      class="grid-col bp0-col-one-half bp3-col-one-third bp4-col-one-quarter bp5-col-one-fifth"
       *ngFor="let tip of tips | filter: tagFilter | filter: environmentEffectFilter | sortByCategory: worstCategory"
     >
       <a [href]="tip.url[translate.currentLang]" class="mozaik__item__link">
-        <div class="plara-template plara-template__case aspect-ratio-portrait">
-          <img
-            class="plara-template__environment-effect-icon"
-            src="https://www.sitra.fi/app/themes/sitra/assets/images/icon-{{ tip.environmentEffect.fi }}vaikutus.svg"
-            alt="Ympäristövaikutus"
-          />
-          <div class="plara-template__content-container">
-            <div class="plara-template__vinjet-container">
-              <span class="vinjet vinjet-solid vinjet-no-hover"> {{ tip.tag[translate.currentLang] }} </span>
-            </div>
-            <h3 class="plara-template__heading plara__text">{{ tip.title[translate.currentLang] }}</h3>
-          </div>
+        <div class="plara-template plara-template__case">
           <div
-            class="plara-image__container aspect-ratio-portrait"
+            class="plara-image__container plara-image__container-square"
             [ngStyle]="{ 'background-image': 'url(' + tip.images + ')' }"
-          ></div>
-          <div class="plara-template__image-mask"></div>
+          >
+            <img
+              class="plara-template__environment-effect-icon"
+              src="https://www.sitra.fi/app/themes/sitra/assets/images/icon-{{ tip.environmentEffect.fi }}vaikutus.svg"
+              alt=""
+            />
+          </div>
+          <div class="plara-template__vinjet-container">
+            <span class="vinjet vinjet-solid vinjet-no-hover"> {{ tip.tag[translate.currentLang] }} </span>
+          </div>
+          <div class="plara-template__content-container">
+            <h3 class="plara-template__heading">{{ tip.title[translate.currentLang] }}</h3>
+          </div>
         </div>
       </a>
     </div>

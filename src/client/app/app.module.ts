@@ -1,11 +1,12 @@
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { Inject, NgModule, PLATFORM_ID } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import {
   BrowserModule,
   BrowserTransferStateModule,
 } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { TransferHttpCacheModule } from '@nguniversal/common';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { ClickOutsideModule } from 'ng-click-outside';
@@ -23,23 +24,13 @@ import { ThousandSeparatorPipe } from './pipes/thousand-separator.pipe';
 import { QuestionComponent } from './question/question.component';
 import { ResultComponent } from './result/result.component';
 import { CategoryService } from './services/category.service';
-import { NavigationService } from './services/navigation.service';
 import { ResultService } from './services/result.service';
 import { TestService } from './services/test.service';
 import { TestComponent } from './test/test.component';
 import { TipComponent } from './tip/tip.component';
-import { UniversalTranslateLoader } from './utils/universal.translate-loader';
 
-export function translateFactory(
-  platformId: any,
-  httpClient: HttpClient,
-): TranslateLoader {
-  const browserLoader = new TranslateHttpLoader(httpClient);
-  return new UniversalTranslateLoader(
-    platformId,
-    browserLoader,
-    'dist/public/assets/i18n',
-  );
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http, '/assets/i18n/');
 }
 
 @NgModule({
@@ -60,18 +51,19 @@ export function translateFactory(
     ThousandSeparatorPipe,
   ],
   imports: [
+    AppRoutingModule,
+    BrowserAnimationsModule,
     BrowserModule.withServerTransition({ appId: 'lifestyletest' }),
     BrowserTransferStateModule,
     FormsModule,
     HttpClientModule,
-    BrowserAnimationsModule,
-    AppRoutingModule,
+    TransferHttpCacheModule,
     ClickOutsideModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
-        useFactory: translateFactory,
-        deps: [PLATFORM_ID, HttpClient],
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient],
       },
     }),
   ],
@@ -83,9 +75,7 @@ export function translateFactory(
     CategoryComponent,
     TestComponent,
   ],
-  providers: [CategoryService, ResultService, TestService, NavigationService],
+  providers: [CategoryService, ResultService, TestService],
   bootstrap: [AppComponent],
 })
-export class AppModule {
-  constructor(@Inject(PLATFORM_ID) private readonly platformId: any) {}
-}
+export class AppModule {}

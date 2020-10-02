@@ -1,7 +1,11 @@
 import * as mongoose from 'mongoose';
 
 export function database() {
-  mongoose.connect(process.env.MONGOHQ_URL, { useNewUrlParser: true });
+  mongoose.connect(process.env.MONGOHQ_URL, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useFindAndModify: false,
+  });
   const db = mongoose.connection;
 
   mongoose.Promise = Promise;

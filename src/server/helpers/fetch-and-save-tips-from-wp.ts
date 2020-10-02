@@ -17,13 +17,23 @@ dotenv.config({ path: '.env' });
 const argument = process.argv[2];
 
 if (argument === 'staging') {
-  mongoose.connect(process.env.MONGOHQ_URL_STAGING, { useNewUrlParser: true });
+  mongoose.connect(process.env.MONGOHQ_URL_STAGING, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useFindAndModify: false,
+  });
 } else if (argument === 'production') {
   mongoose.connect(process.env.MONGOHQ_URL_PRODUCTION, {
     useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useFindAndModify: false,
   });
 } else {
-  mongoose.connect(process.env.MONGOHQ_URL, { useNewUrlParser: true });
+  mongoose.connect(process.env.MONGOHQ_URL, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useFindAndModify: false,
+  });
 }
 
 function rawTip(tip) {

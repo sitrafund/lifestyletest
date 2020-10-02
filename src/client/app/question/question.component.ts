@@ -46,7 +46,7 @@ import { TestService } from '../services/test.service';
   ],
 })
 export class QuestionComponent implements OnInit {
-  public question: any;
+  public question: any = {};
   public category: any;
   public questionCount: number = 0;
   public animationState: string = 'enter';

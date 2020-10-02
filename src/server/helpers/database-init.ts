@@ -12,12 +12,11 @@ const chalk = require('chalk');
 
 dotenv.config({ path: '.env' });
 
-mongoose.connect(process.env.MONGOHQ_URL);
+mongoose.connect(process.env.MONGOHQ_URL, { useFindAndModify: false });
 
 import Answer from '../models/answer';
 import Category from '../models/category';
 import Question from '../models/question';
-import Result from '../models/result';
 import ResultCategory from '../models/result-category';
 import Tip from '../models/tip';
 

@@ -1,0 +1,57 @@
+@import 'variables';
+
+@mixin button-sitra {
+  vertical-align: middle;
+  background-color: $color__background-button;
+  color: $color__button;
+  border: 0;
+  border-radius: 3px;
+  font-family: $font__button;
+  font-weight: 800;
+  font-size: 0.75em;
+  text-transform: uppercase;
+  text-decoration: none;
+  letter-spacing: 0.8px;
+  box-shadow: $button__box-shadow;
+  display: inline-block;
+  padding-left: 2em;
+  padding-right: 2em;
+  padding-bottom: 0;
+  padding-top: 0.1em;
+  transition: color 0.2s, box-shadow 0.2s;
+  cursor: pointer;
+  height: 3.125rem;
+  line-height: 3.3rem;
+
+  &.active,
+  &:hover {
+    color: $color__button-hover;
+    opacity: 1;
+    box-shadow: $button__box-shadow-hover;
+  }
+
+  &:visited {
+    color: $color__button;
+  }
+
+  &:visited:hover {
+    color: $color__button-hover;
+  }
+
+  .btn--secondary {
+    box-shadow: $button__box-shadow-light;
+  }
+}
+
+@mixin button-sitra--inverted {
+  background: $color__button;
+
+  &,
+  &:hover {
+    color: $color__background-button;
+  }
+
+  &:hover {
+    background: rgba($color__button, 0.7);
+  }
+}

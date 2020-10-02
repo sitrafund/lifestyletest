@@ -13,10 +13,7 @@
         (click)="toggleTooltip(values[i].name)"
       >
         <img *ngIf="values[i].icon" [src]="'/assets/images/' + values[i].icon" alt="Kategoria" />
-        <span
-          >{{ values[i].name[translate.currentLang] }}<br />{{ values[i].value | roundUp | thousandSeparator }} kg
-          CO₂e</span
-        >
+        <span> {{ values[i].name[currentLang] }}<br />{{ values[i].value | roundUp | thousandSeparator }} kg CO₂e</span>
       </div>
     </ng-container>
   </div>

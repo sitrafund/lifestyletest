@@ -1,10 +1,12 @@
+import * as bodyParser from 'body-parser';
+import * as compression from 'compression';
 import * as cors from 'cors';
 import * as dotenv from 'dotenv';
 import * as express from 'express';
 import * as expressCluster from 'express-cluster';
+import * as morgan from 'morgan';
 import { database } from './database';
 import { router } from './router';
-import { server } from './server';
 import { universal } from './universal';
 
 dotenv.config({ path: '.env' });
@@ -16,13 +18,14 @@ expressCluster(
 
     app.use(cors());
     app.options('*', cors());
-    database();
-    server(app);
-    router(app);
+    app.use(bodyParser.json());
+    app.use(bodyParser.urlencoded({ extended: false }));
+    app.use(morgan('dev'));
+    app.use(compression());
 
-    if (process.argv[2] === '--universal') {
-      universal(app);
-    }
+    database();
+    router(app);
+    universal(app);
 
     return app.listen(PORT);
   },
