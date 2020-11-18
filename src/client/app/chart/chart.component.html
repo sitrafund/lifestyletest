@@ -1,4 +1,4 @@
-<div class="chart">
+<div class="chart" [attr.aria-label]="context">
   <div class="chart__bar" (clickOutside)="toggleTooltip()">
     <ng-container *ngFor="let it of iterations; index as i">
       <div
@@ -12,8 +12,15 @@
         [style.width]="values[i].width"
         (click)="toggleTooltip(values[i].name)"
       >
-        <img *ngIf="values[i].icon" [src]="'/assets/images/' + values[i].icon" alt="Kategoria" />
-        <span> {{ values[i].name[currentLang] }}<br />{{ values[i].value | roundUp | thousandSeparator }} kg CO₂e</span>
+        <img
+          *ngIf="values[i].icon"
+          [src]="'/assets/images/' + values[i].icon"
+          [attr.alt]="values[i].name[currentLang]"
+        />
+        <span
+          ><strong aria-hidden="true">{{ values[i].name[currentLang] }}</strong
+          ><br />{{ values[i].value | roundUp | thousandSeparator }} kg CO₂e</span
+        >
       </div>
     </ng-container>
   </div>

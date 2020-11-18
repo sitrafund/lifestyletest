@@ -51,6 +51,7 @@ export class QuestionComponent implements OnInit {
   public questionCount: number = 0;
   public animationState: string = 'enter';
   public answerClicked: boolean = false;
+  private touched: boolean = false;
 
   constructor(
     @Inject(PLATFORM_ID) private platformId: any,
@@ -87,12 +88,13 @@ export class QuestionComponent implements OnInit {
           }, 125);
         }, 500);
       }
-      if (isPlatformBrowser(this.platformId)) {
-        const focusEl = document.getElementById('focus');
-        if (focusEl) {
-          focusEl.focus();
-        }
-      }
+
+      // if you don't want to focus the title for first question, you have to handle the initial focus on the page for screen readers
+      // if (this.touched) {
+      setTimeout(() => {
+        this.focusTitle();
+      }, 800);
+      // }
     });
 
     this.testService.currentCategory.subscribe((value: any) => {
@@ -106,7 +108,17 @@ export class QuestionComponent implements OnInit {
     });
   }
 
+  focusTitle() {
+    if (isPlatformBrowser(this.platformId)) {
+      const focusEl = document.getElementById('question-title');
+      if (focusEl) {
+        focusEl.focus();
+      }
+    }
+  }
+
   saveAnswer(answer) {
+    this.touched = true;
     this.answerClicked = true;
     this.testService.saveAnswer(answer);
     setTimeout(() => {

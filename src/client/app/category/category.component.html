@@ -3,10 +3,10 @@
   <ng-template #endOfCategory>
     <div class="category-end" [@fade]="animationState">
       <div class="category__icon {{ category.color }}">
-        <img [src]="'/assets/images/' + category.icon" alt="Kategoria" />
+        <img [src]="'/assets/images/' + category.icon" alt="" />
       </div>
       <div class="category__title">
-        <h2>{{ category.title[translate.currentLang] }}</h2>
+        <h1 id="category-title" class="h2" tabindex="-1">{{ category.title[translate.currentLang] }}</h1>
       </div>
       <div class="category__end-info">
         <p *ngIf="showPositive">

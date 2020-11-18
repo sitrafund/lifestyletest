@@ -158,6 +158,10 @@ export class ResultComponent implements OnInit {
         this.parseTips();
         this.constructMetaTags();
         this.parseShareUrls();
+
+        setTimeout(() => {
+          this.focusTitle();
+        }, 0);
       });
   }
 
@@ -274,6 +278,15 @@ export class ResultComponent implements OnInit {
         });
       }
     }, this);
+  }
+
+  focusTitle() {
+    if (isPlatformBrowser(this.platformId)) {
+      const focusEl = document.getElementById('result-title');
+      if (focusEl) {
+        focusEl.focus();
+      }
+    }
   }
 
   goToHomePage() {

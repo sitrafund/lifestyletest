@@ -56,6 +56,28 @@
   margin-top: 10px;
 }
 
+.banner__license-link-wrapper {
+  position: relative;
+
+  img {
+    border-width: 0;
+  }
+
+  a {
+    display: inline-block;
+
+    &::after {
+      content: '';
+      display: block;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+    }
+  }
+}
+
 .banner__chart {
   margin-bottom: 30px;
   height: 50px;

@@ -132,22 +132,19 @@
   margin: 0 -100%;
   text-align: center;
 
-  h5 {
-    margin: 0;
+  span {
+    text-rendering: optimizelegibility;
+    line-height: 1.15;
   }
   @include breakpoint(mobile) {
     float: left;
     margin: 0;
-
-    h5 {
-      margin: 0;
-    }
   }
 }
 
 .category__title-spacer {
-  h5 {
-    margin: 0;
+  span {
+    line-height: 1.15;
   }
 }
 /* -----------------------------------------------------------------------------
@@ -318,6 +315,12 @@
   border: none;
   display: flex;
   align-items: center;
+  background: transparent;
+
+  &:hover,
+  &:focus {
+    font-weight: bold;
+  }
 
   span {
     line-height: 1;

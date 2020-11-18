@@ -1,8 +1,10 @@
 <div class="banner {{ bestCategory.color }}" *ngIf="bestCategory" [ngClass]="{ hidden: !isBrowser }">
   <div class="selite-container bp0-small-padding banner-container">
     <div class="selite-contents banner-contents">
-      <div class="banner__image"><img [src]="'/assets/images/' + bestCategory.resultInfo.image" alt="Tulos" /></div>
-      <div class="banner__heading"><h1 [innerHTML]="bestCategory.resultInfo.title[translate.currentLang]"></h1></div>
+      <div class="banner__image"><img [src]="'/assets/images/' + bestCategory.resultInfo.image" alt="" /></div>
+      <div class="banner__heading">
+        <h1 id="result-title" tabindex="-1" [innerHTML]="bestCategory.resultInfo.title[translate.currentLang]"></h1>
+      </div>
       <div class="banner__text">
         <p>{{ bestCategory.resultInfo.positiveDescription[translate.currentLang] }}</p>
         <p *ngIf="worstCategory">{{ worstCategory.resultInfo.negativeDescription[translate.currentLang] }}</p>
@@ -30,10 +32,15 @@
     </div>
     <div class="ingress" style="display:inline-block">kg CO₂e</div>
     <div class="chart-container">
-      <app-chart [values]="averageChart" [minScale]="minScale" *ngIf="averageChart.length > 0"></app-chart>
+      <app-chart
+        [values]="averageChart"
+        [minScale]="minScale"
+        *ngIf="averageChart.length > 0"
+        [context]="'AVERAGE_FOOTPRINT' | translate"
+      ></app-chart>
     </div>
   </div>
-  <div class="chart-legend">
+  <div class="chart-legend" aria-hidden="true">
     <ng-container *ngFor="let category of result.categoryCO2e; let i = index">
       <div class="category-wrapper">
         <div class="category">
@@ -46,34 +53,74 @@
   </div>
   <div class="banner__details banner__graph">
     <p>
-      <a [href]="'GRAPH_URL' | translate" target="_blank">{{ 'GRAPH_TEXT' | translate }}</a>
+      <a [href]="'GRAPH_URL' | translate" target="_blank">
+        {{ 'GRAPH_TEXT' | translate }}
+        <svg
+          [attr.aria-label]="'NEW_WINDOW' | translate"
+          height="13"
+          viewBox="0 0 13 13"
+          width="13"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="m12 1.29289322-.2928932-.29289322h.2928932zm0 .41421356-5.5 5.50000002-.7071068-.7071068 5.5-5.5h-5.2928932v-1h7v.5 6.5h-1zm-7 1.29289322h-5v10h10v-5h-1v4h-8v-8h4z"
+            fill-rule="evenodd"
+          ></path>
+        </svg>
+      </a>
     </p>
   </div>
   <div class="banner__details banner__graph">
     <p>
-      <a [href]="'CALCULATIONS_URL' | translate" target="_blank">{{ 'CALCULATIONS_TEXT' | translate }}</a>
+      <a [href]="'CALCULATIONS_URL' | translate" target="_blank">
+        {{ 'CALCULATIONS_TEXT' | translate }} (pdf)
+        <svg
+          [attr.aria-label]="'NEW_WINDOW' | translate"
+          height="13"
+          viewBox="0 0 13 13"
+          width="13"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="m12 1.29289322-.2928932-.29289322h.2928932zm0 .41421356-5.5 5.50000002-.7071068-.7071068 5.5-5.5h-5.2928932v-1h7v.5 6.5h-1zm-7 1.29289322h-5v10h10v-5h-1v4h-8v-8h4z"
+            fill-rule="evenodd"
+          ></path>
+        </svg>
+      </a>
     </p>
   </div>
   <div class="banner__details">
-    <h4 class="smallcaps">{{ 'SHARE_YOUR_RESULT' | translate }}</h4>
+    <h2 class="smallcaps share-heading" id="share-heading">{{ 'SHARE_YOUR_RESULT' | translate }}</h2>
   </div>
   <div class="banner__buttons">
     <div class="banner__button-container">
-      <a class="btn btn__has-icon icon-facebook btn__social-media-share" target="_blank" [href]="facebookUrl"></a>
+      <a class="btn btn__has-icon icon-facebook btn__social-media-share" target="_blank" [href]="facebookUrl">
+        <span aria-labelledby="share-heading"></span>
+        <span class="screen-reader-text">Facebook {{ 'NEW_WINDOW' | translate }}</span></a
+      >
     </div>
     <div class="banner__button-container">
-      <a class="btn btn__has-icon icon-twitter btn__social-media-share" target="_blank" [href]="twitterUrl"></a>
+      <a class="btn btn__has-icon icon-twitter btn__social-media-share" target="_blank" [href]="twitterUrl">
+        <span aria-labelledby="share-heading"></span>
+        <span class="screen-reader-text">Twitter {{ 'NEW_WINDOW' | translate }}</span></a
+      >
     </div>
     <div class="banner__button-container">
-      <a class="btn btn__has-icon icon-linkedin btn__social-media-share" target="_blank" [href]="linkedinUrl"></a>
+      <a class="btn btn__has-icon icon-linkedin btn__social-media-share" target="_blank" [href]="linkedinUrl">
+        <span aria-labelledby="share-heading"></span>
+        <span class="screen-reader-text">LinkedIn {{ 'NEW_WINDOW' | translate }}</span></a
+      >
     </div>
     <div class="banner__button-container">
-      <a class="btn btn__has-icon icon-email btn__social-media-share" target="_blank" [href]="mailtoUrl"></a>
+      <a class="btn btn__has-icon icon-email btn__social-media-share" target="_blank" [href]="mailtoUrl">
+        <span aria-labelledby="share-heading"></span>
+        <span class="screen-reader-text">{{ 'SHARE_EMAIL' | translate }}</span></a
+      >
     </div>
   </div>
   <div class="banner__details">
     <p>
-      <a (click)="goToHomePage()">{{ 'START_OVER' | translate }}</a>
+      <button class="btn" (click)="goToHomePage()">{{ 'START_OVER' | translate }}</button>
     </p>
   </div>
 </div>

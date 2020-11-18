@@ -4,13 +4,16 @@
   "TEST_URL": "/testi",
   "RESULT_URL": "/tulos",
   "INTRO_IMAGE": "/assets/images/elamantapatesti-otsikko.svg",
+  "INTRO_IMAGE_ALT": "Testaa, oletko uhka vai mahdollisuus?",
   "SEARCH": "Hae",
   "SEARCH_URL": "https://www.sitra.fi/arkisto/?search_term=",
   "MENU": "Valikko",
   "DMAT": "Laskenta: D-mat oy",
   "UPDATED": "Testin laskentaa on päivitetty 30.9.2019",
-  "LICENSE": "<a rel='license' href='http://creativecommons.org/licenses/by-nc-sa/4.0/'><img alt='Creative Commons -lisenssi' style='border-width:0' src='https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png' /></a><br />Tämä teos on lisensoitu <a rel='license' href='http://creativecommons.org/licenses/by-nc-sa/4.0/'>Creative Commons Nimeä-EiKaupallinen-JaaSamoin 4.0 Kansainvälinen -lisenssillä</a>.",
-  "LICENSE-2": "Lue lisensoinnista lisää täältä: <a href='https://www.sitra.fi/artikkelit/sitran-100-fiksua-arjen-tekoa-ja-elamantapatesti-lisenssit-ja-kayttoehdot/' target='_blank'>Sitran 100 fiksua arjen tekoa ja Elämäntapatesti: lisenssit</a>",
+  "LICENSE_PREFIX": "Tämä teos on lisensoitu",
+  "LICENSE": "Creative Commons Nimeä-EiKaupallinen-JaaSamoin 4.0 Kansainvälinen -lisenssillä",
+  "LICENSE_2_PREFIX": "Lue lisensoinnista lisää täältä:",
+  "LICENSE_2": "Sitran 100 fiksua arjen tekoa ja Elämäntapatesti: lisenssit",
   "CHANNELS": "Kanavat",
   "CONTACT_US": "Ota yhteyttä",
   "SITRA_NAME": "Suomen itsenäisyyden juhlarahasto Sitra",
@@ -34,6 +37,7 @@
   "INTRO": "Ovatko elämäntapasi ympäristön puolella vai sitä vastaan? Pikatestin tuloksena saat sinulle räätälöityjä vinkkejä, joilla säästät aikaa ja rahaa sekä parannat elämänlaatuasi. Ja luonto kiittää!",
   "BEGIN": "Aloita elämäntapatesti",
   "DONE": "Testi on tehty {{ count }} kertaa ja keskimääräinen hiilijalanjälki on",
+  "QUESTION": "Kysymys",
   "BACK": "Takaisin",
   "CONTINUE": "JATKA",
   "SHOW_RESULTS": "NÄYTÄ TULOKSET",
@@ -64,8 +68,10 @@
       "DESCRIPTION": "Hiilijalanjälkeni on {{value}} kg CO2e. Testaa sinäkin, oletko uhka vai mahdollisuus ympäristölle!"
     }
   },
+  "SHARE_EMAIL": "Sähköposti",
   "GRAPH_TEXT": "Keskivertosuomalaisen hiilijalanjälki",
   "GRAPH_URL": "https://www.sitra.fi/artikkelit/keskivertosuomalaisen-hiilijalanjalki/",
   "CALCULATIONS_TEXT": "Elämäntapatestin laskentaperusteet",
-  "CALCULATIONS_URL": "/Sitran_elämäntapatestin_laskentaperusteet_suomeksi.pdf"
+  "CALCULATIONS_URL": "/Sitran_elämäntapatestin_laskentaperusteet_suomeksi.pdf",
+  "FILTER_UPDATED": "Suodatin päivitetty"
 }
