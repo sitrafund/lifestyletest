@@ -15,13 +15,6 @@ module.exports = function(config) {
         client: {
             clearContext: false // leave Jasmine Spec Runner output visible in browser
         },
-        files: [{
-            pattern: './src/client/test.ts',
-            watched: false
-        }],
-        preprocessors: {
-            './src/client/test.ts': ['@angular-devkit/build-angular']
-        },
         mime: {
             'text/x-typescript': ['ts', 'tsx']
         },
@@ -29,7 +22,7 @@ module.exports = function(config) {
             dir: require('path').join(__dirname, 'coverage'), reports: ['html', 'lcovonly'],
             fixWebpackSourcePaths: true
         },
-        
+
         reporters: config.angularCli && config.angularCli.codeCoverage ? ['progress', 'coverage-istanbul'] : ['progress', 'kjhtml'],
         port: 9876,
         colors: true,
