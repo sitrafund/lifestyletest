@@ -5,9 +5,9 @@
 const q24as = [
   {
     title: {
-      en: 'I don’t like shopping. I only buy what I need.',
-      fi: 'En pidä shoppailusta. Ostan vain tarpeeseen.',
-      se: 'Jag gillar inte att shoppa. Jag köper bara det jag behöver.',
+      en: 'My shopping is limited to absolutely necessary purchases only.',
+      fi: 'Ostokseni rajoittuvat välttämättömiin hankinoihin.',
+      se: 'Mina inköp begränsar sig till nödvändiga inköp.',
     },
     index: 401,
     co2e: 527,
@@ -17,9 +17,10 @@ const q24as = [
   {
     title: {
       en:
-        'Oh, I love flea markets! You can find all kinds of nice things there!',
-      fi: 'Voih, rakastan kirpputoreja! Niiltä löytyy vaikka mitä ihanaa!',
-      se: 'Oh, jag älskar lopptorg! Där hittar jag allt möjligt härligt!',
+        'Whenever I can, I buy things second hand from flea markets, for example.',
+      fi: 'Ostan kaiken mahdollisen käytettynä esimerkiksi kirpputoreilta.',
+      se:
+        'Alltid när det är möjligt köper jag begagnat till exempel på loppmarknader.',
     },
     index: 402,
     co2e: 527,
@@ -28,9 +29,11 @@ const q24as = [
   },
   {
     title: {
-      en: 'I make impulse buys every now and then.',
-      fi: 'Teen heräteostoksia aina silloin tällöin.',
-      se: 'Jag gör impulsköp nu som då.',
+      en:
+        'I estimate that my shopping habits are the same as an average Finn’s.',
+      fi: 'Arvioisin ostotottumusteni vastaavan keskimääräistä suomalaista.',
+      se:
+        'Jag uppskattar att mina inköpsvanor motsvarar genomsnittliga finländska vanor.',
     },
     index: 403,
     co2e: 1054,
@@ -39,9 +42,11 @@ const q24as = [
   },
   {
     title: {
-      en: 'I love shopping! (Although all my cupboards are already full…)',
-      fi: 'Rakastan shoppailua! (Vaikka kaappini ovatkin jo aivan täynnä…)',
-      se: 'Jag älskar att shoppa! (även om mina skåp redan är proppfulla)',
+      en: 'I like shopping and I think I have more stuff than on average.',
+      fi:
+        'Pidän shoppailusta ja tavaraa kertyy luullakseni keskivertoa enemmän.',
+      se:
+        'Jag tycker om att shoppa och jag tror att jag köper mer än genomsnittet.',
     },
     index: 404,
     co2e: 1581,

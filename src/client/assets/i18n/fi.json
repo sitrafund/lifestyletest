@@ -9,7 +9,7 @@
   "SEARCH_URL": "https://www.sitra.fi/arkisto/?search_term=",
   "MENU": "Valikko",
   "DMAT": "Laskenta: D-mat oy",
-  "UPDATED": "Testin laskentaa on päivitetty 30.9.2019",
+  "UPDATED": "Testin laskentaa on päivitetty 19.3.2021",
   "LICENSE_PREFIX": "Tämä teos on lisensoitu",
   "LICENSE": "Creative Commons Nimeä-EiKaupallinen-JaaSamoin 4.0 Kansainvälinen -lisenssillä",
   "LICENSE_2_PREFIX": "Lue lisensoinnista lisää täältä:",
@@ -75,6 +75,6 @@
   "GRAPH_TEXT": "Keskivertosuomalaisen hiilijalanjälki",
   "GRAPH_URL": "https://www.sitra.fi/artikkelit/keskivertosuomalaisen-hiilijalanjalki/",
   "CALCULATIONS_TEXT": "Elämäntapatestin laskentaperusteet",
-  "CALCULATIONS_URL": "/Sitran_elämäntapatestin_laskentaperusteet_suomeksi.pdf",
+  "CALCULATIONS_URL": "/Sitran_elamantapatestin_laskentaperusteet_suomeksi.pdf",
   "FILTER_UPDATED": "Suodatin päivitetty"
 }

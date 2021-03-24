@@ -66,9 +66,10 @@ export class TestService {
   }
 
   saveResult() {
-    this.resultService
-      .updateResult(this.getResult())
-      .subscribe(status => status, error => error);
+    this.resultService.updateResult(this.getResult()).subscribe(
+      status => status,
+      error => error,
+    );
   }
 
   goToResultPage() {
@@ -79,9 +80,10 @@ export class TestService {
       document.cookie = 'appToken=' + this.getResult()._id;
     }
 
-    this.resultService
-      .saveResult(this.getResult())
-      .subscribe(status => status, error => error);
+    this.resultService.saveResult(this.getResult()).subscribe(
+      status => status,
+      error => error,
+    );
     this.translate.get('RESULT_URL').subscribe(translation => {
       this.router.navigate([translation, this.getResult()._id]);
     });
@@ -493,9 +495,6 @@ export class TestService {
           case 127:
             answer.multiplier[0] = $I$25() / ((2.6 + 2.25) / 2);
             break;
-          case 128:
-            answer.multiplier[0] = 0;
-            break;
         }
 
         answer.co2e =
@@ -603,15 +602,15 @@ export class TestService {
       // 3rd category
       case 18: {
         answer.co2e =
-          (answer.multiplier / 7 - 1.42) *
+          (answer.multiplier / 7 - 1.04) *
           309.3959 *
           this.getResult().answers[16].answer.multiplier;
         return answer;
       }
       case 19: {
         answer.co2e =
-          (answer.multiplier - 15.9) *
-          21.43739 *
+          (answer.multiplier - 19.9) *
+          20.712068 *
           this.getResult().answers[16].answer.multiplier;
         return answer;
       }

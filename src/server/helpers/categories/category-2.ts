@@ -205,7 +205,7 @@ const q13as = [
       se: '100 - 400 km',
     },
     index: 217,
-    co2e: 343,
+    co2e: 311,
     multiplier: null,
     tips: [68609],
   },
@@ -216,7 +216,7 @@ const q13as = [
       se: 'mer än 400 km',
     },
     index: 218,
-    co2e: 735,
+    co2e: 612,
     multiplier: null,
     tips: [68609],
   },
@@ -242,7 +242,7 @@ const q14as = [
     },
     index: 220,
     co2e: null,
-    multiplier: 668,
+    multiplier: 895,
     tips: [68627, 68629, 68631, 68633],
   },
   {
@@ -253,7 +253,7 @@ const q14as = [
     },
     index: 221,
     co2e: null,
-    multiplier: 2171,
+    multiplier: 2909,
     tips: [68627, 68629, 68631, 68633, 68635, 68647],
   },
   {
@@ -264,7 +264,7 @@ const q14as = [
     },
     index: 222,
     co2e: null,
-    multiplier: 4259,
+    multiplier: 5707,
     tips: [68627, 68629, 68631, 68635, 68647],
   },
   {
@@ -275,7 +275,7 @@ const q14as = [
     },
     index: 223,
     co2e: null,
-    multiplier: 8517,
+    multiplier: 11414,
     tips: [68627, 68629, 68631, 68635, 68647],
   },
 ];
