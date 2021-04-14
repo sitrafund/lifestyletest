@@ -5,7 +5,8 @@ import {
   transition,
   trigger,
 } from '@angular/animations';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject, PLATFORM_ID } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 import { TranslateService } from '@ngx-translate/core';
 import { Category } from '../interfaces/category';
 import { Question } from '../interfaces/question';
@@ -60,6 +61,7 @@ export class CategoryComponent implements OnInit {
   public animationState: string = 'out';
 
   constructor(
+    @Inject(PLATFORM_ID) private platformId: any,
     public testService: TestService,
     public translate: TranslateService,
   ) {}
@@ -74,6 +76,9 @@ export class CategoryComponent implements OnInit {
         setTimeout(() => {
           this.animationState = 'in';
         }, 250);
+        setTimeout(() => {
+          this.focusTitle();
+        }, 600);
       } else {
         this.animationState = 'out';
         this.showPositive = false;
@@ -97,6 +102,15 @@ export class CategoryComponent implements OnInit {
           }
         }
       }, this);
+    }
+  }
+
+  focusTitle() {
+    if (isPlatformBrowser(this.platformId)) {
+      const focusEl = document.getElementById('category-title');
+      if (focusEl) {
+        focusEl.focus();
+      }
     }
   }
 

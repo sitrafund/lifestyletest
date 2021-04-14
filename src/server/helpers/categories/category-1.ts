@@ -107,9 +107,9 @@ const q2as = [
   },
   {
     title: {
-      en: '81 -120 m2',
-      fi: '81 -120 m2',
-      se: '81 -120 m2',
+      en: '81 - 120 m2',
+      fi: '81 - 120 m2',
+      se: '81 - 120 m2',
     },
     index: 110,
     co2e: null,
@@ -269,19 +269,19 @@ const q6as = [
     },
     index: 121,
     co2e: '',
-    multiplier: [0.147, null],
-    tips: [67973, 67978, 68528, 68546, 68411],
+    multiplier: [0.158, null],
+    tips: [67973, 68528, 68546, 68411],
   },
   {
     title: {
       en: 'Green district heating / Wood or pellets',
       fi: 'Vihreä kaukolämpö / Puu tai pelletti',
-      se: 'Grön fjärrvärme /Trä eller pellet',
+      se: 'Grön fjärrvärme / Trä eller pellet',
     },
     index: 122,
     co2e: '',
     multiplier: [0.014, null],
-    tips: [67973, 67978, 68528, 68546, 68411],
+    tips: [67973, 68528, 68546, 68411],
   },
   {
     title: {
@@ -292,7 +292,7 @@ const q6as = [
     index: 123,
     co2e: '',
     multiplier: [0.265, null],
-    tips: [67973, 67978, 68528, 68546, 68411],
+    tips: [67973, 68528, 68546, 68411],
   },
   {
     title: {
@@ -303,7 +303,7 @@ const q6as = [
     index: 124,
     co2e: '',
     multiplier: [null, null],
-    tips: [67973, 67978, 68414, 68445, 68516, 68528, 68546, 68411],
+    tips: [67973, 68414, 68445, 68516, 68528, 68546, 68411],
   },
   {
     title: {
@@ -314,7 +314,7 @@ const q6as = [
     index: 125,
     co2e: '',
     multiplier: [0.199, null],
-    tips: [67973, 67978, 68528, 68546, 68411],
+    tips: [67973, 68528, 68546, 68411],
   },
   {
     title: {
@@ -336,8 +336,8 @@ const q6as = [
     },
     index: 128,
     co2e: '',
-    multiplier: [null, null],
-    tips: [67973, 67978, 68528, 68546, 68411],
+    multiplier: [0.158, null],
+    tips: [67973, 68528, 68546, 68411],
   },
 ];
 

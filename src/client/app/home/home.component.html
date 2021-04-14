@@ -1,9 +1,10 @@
 <div class="banner full-height" [ngClass]="{ 'full-height-iframe': inIframe }">
   <div class="banner-container bp0-small-padding">
     <div class="banner-contents">
-      <div class="banner__heading">
-        <img src="{{ 'INTRO_IMAGE' | translate }}" alt="Testaa, oletko uhka vai mahdollisuus?" />
-      </div>
+      <h1 class="banner__heading">
+        <span class="screen-reader-text">{{ 'INTRO_IMAGE_ALT' | translate }}</span>
+        <img id="intro-image" src="{{ 'INTRO_IMAGE' | translate }}" alt="" />
+      </h1>
       <div class="banner__text ingress">
         <p>{{ 'INTRO' | translate }}</p>
       </div>
@@ -15,19 +16,61 @@
       </div>
       <div class="banner__details">
         <p *ngIf="averages">
-          <span class="number__container">{{ 'DONE' | translate: { count: averages.count | thousandSeparator } }}</span>
-          <strong class="number__container">{{ averages.average | roundUp | thousandSeparator }}</strong> kg CO₂e
+          <span>{{ 'DONE' | translate: { count: averages.count | thousandSeparator } }} </span>
+          <strong>{{ averages.average | roundUp | thousandSeparator }}</strong> kg CO₂e
         </p>
       </div>
-      <div class="banner__chart"><app-chart [values]="chartData" *ngIf="averages"></app-chart></div>
+      <div class="banner__chart">
+        <app-chart [values]="chartData" *ngIf="averages" [context]="'AVERAGE_FOOTPRINT' | translate"></app-chart>
+      </div>
       <div class="banner__details">
         <small>{{ 'DMAT' | translate }}</small> <br />
         <small>{{ 'UPDATED' | translate }}</small> <br />
-        <small class="banner__license" [innerHTML]="'LICENSE' | translate"></small>
-        <small class="banner__license" [innerHTML]="'LICENSE-2' | translate"></small>
+        <div class="banner__license-link-wrapper">
+          <small class="banner__license">
+            <img alt="" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /><br />
+            {{ 'LICENSE_PREFIX' | translate }}
+            <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"> {{ 'LICENSE' | translate }} </a>.
+          </small>
+        </div>
+        <small class="banner__license">
+          {{ 'LICENSE_2_PREFIX' | translate }}
+          <a
+            href="https://www.sitra.fi/artikkelit/sitran-100-fiksua-arjen-tekoa-ja-elamantapatesti-lisenssit-ja-kayttoehdot/"
+            target="_blank"
+          >
+            {{ 'LICENSE_2' | translate }}
+            <svg
+              [attr.aria-label]="'NEW_WINDOW' | translate"
+              height="13"
+              viewBox="0 0 13 13"
+              width="13"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="m12 1.29289322-.2928932-.29289322h.2928932zm0 .41421356-5.5 5.50000002-.7071068-.7071068 5.5-5.5h-5.2928932v-1h7v.5 6.5h-1zm-7 1.29289322h-5v10h10v-5h-1v4h-8v-8h4z"
+                fill-rule="evenodd"
+              ></path>
+            </svg>
+          </a>
+        </small>
         <small class="banner__license">
           <a [href]="'CALCULATIONS_URL' | translate" target="_blank">
-            <span>{{ 'CALCULATIONS_TEXT' | translate }}</span>
+            <span>
+              {{ 'CALCULATIONS_TEXT' | translate }} (pdf)
+              <svg
+                [attr.aria-label]="'NEW_WINDOW' | translate"
+                height="13"
+                viewBox="0 0 13 13"
+                width="13"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="m12 1.29289322-.2928932-.29289322h.2928932zm0 .41421356-5.5 5.50000002-.7071068-.7071068 5.5-5.5h-5.2928932v-1h7v.5 6.5h-1zm-7 1.29289322h-5v10h10v-5h-1v4h-8v-8h4z"
+                  fill-rule="evenodd"
+                ></path>
+              </svg>
+            </span>
           </a>
         </small>
       </div>

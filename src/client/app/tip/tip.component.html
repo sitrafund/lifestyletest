@@ -1,7 +1,7 @@
 <div class="container">
   <div class="heading-component">
     <div class="heading-container bp0-small-padding">
-      <h1>{{ 'TIPS_HEADING' | translate }}</h1>
+      <h2 class="tip-heading">{{ 'TIPS_HEADING' | translate }}</h2>
       <p class="heading__text">{{ 'TIPS_INTRO' | translate }}</p>
 
       <div class="archive__post-count-container">
@@ -29,8 +29,8 @@
         </ul>
       </div>
       <div>
-        <div class="smallcaps mozaik__filter-label">{{ 'ENVIRONMENT_EFFECT' | translate }}</div>
-        <ul class="archive__selected-filters mozaik__predefined-filters">
+        <div class="smallcaps mozaik__filter-label" id="filter-label">{{ 'ENVIRONMENT_EFFECT' | translate }}</div>
+        <ul class="archive__selected-filters mozaik__predefined-filters" aria-labelledby="filter-label">
           <li *ngFor="let environmentEffect of environmentEffects">
             <button
               class="mozaik__filter environment_effect {{ environmentEffect.fi }}"
@@ -50,6 +50,9 @@
             </button>
           </li>
         </ul>
+      </div>
+      <div class="screen-reader-text" *ngIf="filteringStatus" aria-live="polite">
+        {{ 'FILTER_UPDATED' | translate }}
       </div>
     </div>
   </div>

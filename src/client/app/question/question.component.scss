@@ -6,10 +6,13 @@
 }
 
 .question__progress {
-  h4 {
-    text-align: center;
-    font-size: 16px;
-  }
+  text-align: center;
+  font-size: 16px;
+  margin-bottom: 1rem;
+}
+
+fieldset {
+  border: 0;
 }
 
 .question__title {
@@ -17,6 +20,11 @@
   max-width: 880px;
   margin: 0 auto;
   order: 0;
+  padding: 0 0 1px; // Safari, won't apply heading margins without padding in legend
+
+  h1 {
+    font-size: 1.75em;
+  }
 }
 
 .btn-group {

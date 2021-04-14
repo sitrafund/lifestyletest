@@ -35,16 +35,20 @@ export function universal(app: express.Express) {
   );
 
   app.get('*', (req, res) => {
-    res.render(indexHtml, {
-      req,
-      res,
-      providers: [
-        { provide: APP_BASE_HREF, useValue: req.baseUrl },
-        {
-          provide: 'serverUrl',
-          useValue: `${req.protocol}://${req.get('host')}`,
-        },
-      ],
-    });
+    if (req.headers['x-forwarded-proto'] === 'https') {
+      res.render(indexHtml, {
+        req,
+        res,
+        providers: [
+          { provide: APP_BASE_HREF, useValue: req.baseUrl },
+          {
+            provide: 'serverUrl',
+            useValue: `${req.protocol}://${req.get('host')}`,
+          },
+        ],
+      });
+    } else {
+      res.redirect(301, 'https://' + req.headers.host + req.url);
+    }
   });
 }

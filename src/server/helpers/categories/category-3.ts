@@ -44,7 +44,7 @@ const q18as = [
       se: 'inte alls',
     },
     index: 304,
-    co2e: -356,
+    co2e: -322,
     multiplier: 0,
     tips: null,
   },
@@ -55,7 +55,7 @@ const q18as = [
       se: '1-3 gånger i veckan',
     },
     index: 305,
-    co2e: -258,
+    co2e: -207,
     multiplier: 2.6,
     tips: [
       68651,
@@ -77,7 +77,7 @@ const q18as = [
       se: '4-7  gånger i veckan',
     },
     index: 306,
-    co2e: -134,
+    co2e: -61,
     multiplier: 5.9,
     tips: [
       68651,
@@ -99,7 +99,7 @@ const q18as = [
       se: 'flera gånger om dagen',
     },
     index: 307,
-    co2e: 515,
+    co2e: 730,
     multiplier: 23.8,
     tips: [
       68651,
@@ -124,7 +124,7 @@ const q19as = [
       se: 'inte alls',
     },
     index: 308,
-    co2e: -58,
+    co2e: -412,
     multiplier: 0,
     tips: null,
   },
@@ -135,7 +135,7 @@ const q19as = [
       se: '1-3 gånger i veckan',
     },
     index: 309,
-    co2e: -41,
+    co2e: -358,
     multiplier: 2.6,
     tips: [
       68651,
@@ -157,7 +157,7 @@ const q19as = [
       se: '4-7  gånger i veckan',
     },
     index: 310,
-    co2e: -19,
+    co2e: -290,
     multiplier: 5.9,
     tips: [
       68651,
@@ -179,7 +179,7 @@ const q19as = [
       se: 'flera gånger om dagen',
     },
     index: 311,
-    co2e: 13,
+    co2e: 81,
     multiplier: 23.5,
     tips: [
       68651,
@@ -414,10 +414,11 @@ const cat3qs = [
     index: 18,
     title: {
       en:
-        'How often do you have beef, cold cuts or cheese as part of your meal?',
+        'How often do you have beef, cold cuts or hard cheese as part of your meal?',
       fi:
-        'Kuinka usein yhteensä nautit aterioillasi nautaa, leikkeleitä tai juustoa?',
-      se: 'Hur ofta äter du nötkött, charkuterier eller ost under måltiderna?',
+        'Kuinka usein yhteensä nautit aterioillasi nautaa, leikkeleitä tai kovaa juustoa?',
+      se:
+        'Hur ofta äter du nötkött, charkuterier eller hårdost under måltiderna?',
     },
     answers: q18as,
   },
@@ -425,11 +426,11 @@ const cat3qs = [
     index: 19,
     title: {
       en:
-        'How often do you have pork, chicken, fish or eggs as part of your meal?',
+        'How often do you have pork, chicken, fish, eggs or soft cheese as part of your meal?',
       fi:
-        'Kuinka usein yhteensä nautit aterioillasi possua, kanaa, kalaa tai kananmunaa?',
+        'Kuinka usein yhteensä nautit aterioillasi possua, kanaa, kalaa, kananmunaa tai rae-, tuore- tai pehmeitä juustoja?',
       se:
-        'Hur ofta äter du svinkött, kyckling, fisk eller ägg under måltiderna?',
+        'Hur ofta äter du svinkött, kyckling, fisk, ägg eller mjukost under måltiderna?',
     },
     answers: q19as,
   },
@@ -441,7 +442,7 @@ const cat3qs = [
       fi:
         'Kuinka usein nautit aterioillasi maitotuotteita (maito, piimä, jogurtti, rahka, kerma, voi)?',
       se:
-        'Hur ofta äter du mjölkprodukter (mjölk, surmjölk, yoghurt, kvarg, grädde smör) under måltiderna?',
+        'Hur ofta äter du mjölkprodukter (mjölk, surmjölk, yoghurt, kvarg, grädde, smör) under måltiderna?',
     },
     answers: q20as,
   },

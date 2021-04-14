@@ -23,6 +23,7 @@ export class TipComponent implements OnInit, OnChanges {
   public environmentEffects: Array<any> = [];
   public tagFilter: string = undefined;
   public environmentEffectFilter: string = undefined;
+  public filteringStatus: string = '';
 
   constructor(
     @Inject(PLATFORM_ID) private platformId: any,
@@ -67,6 +68,8 @@ export class TipComponent implements OnInit, OnChanges {
         this.tagFilter = tag;
         document.cookie = 'tagFilter=' + this.tagFilter;
       }
+
+      this.updateFilterStatus();
     }
   }
 
@@ -83,6 +86,15 @@ export class TipComponent implements OnInit, OnChanges {
         document.cookie =
           'environmentEffectFilter=' + this.environmentEffectFilter;
       }
+
+      this.updateFilterStatus();
     }
+  }
+
+  updateFilterStatus() {
+    this.filteringStatus = '';
+    setTimeout(() => {
+      this.filteringStatus = 'done';
+    }, 300);
   }
 }

@@ -49,6 +49,10 @@
   }
 }
 
+.ingress {
+  max-width: 50ch;
+}
+
 .banner__buttons {
   width: 100%;
   margin-top: 0.5rem;
@@ -66,14 +70,21 @@
   &:last-of-type {
     margin-right: 0;
   }
+
+  &:hover,
+  &:focus {
+    background-color: transparent;
+    box-shadow: 0 0 0 3px $color--black;
+    opacity: 0.7;
+  }
 }
 
 .banner__details {
   font-weight: 300;
+}
 
-  h4 {
-    color: black;
-  }
+.share-heading {
+  margin-bottom: 1rem;
 }
 
 .banner__graph {

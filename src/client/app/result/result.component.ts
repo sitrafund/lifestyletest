@@ -35,6 +35,44 @@ export class ResultComponent implements OnInit {
   // Result classification
   public bestCategory: Category;
   public worstCategory: Category;
+  public goalChart: Array<any> = [
+    {
+      color: 'orange',
+      icon: 'test-icon-asuminen.svg',
+      name: { en: 'Living', fi: 'Asuminen', se: 'Boende' },
+      value: 625,
+      width: '25%',
+    },
+    {
+      color: 'blue',
+      icon: 'test-icon-liikenne-ja-matkailu.svg',
+      name: {
+        en: 'Transport and tourism',
+        fi: 'Liikenne ja matkailu',
+        se: 'Trafik och resor',
+      },
+      value: 625,
+      width: '25%',
+    },
+    {
+      color: 'green',
+      icon: 'test-icon-ruoka.svg',
+      name: { en: 'Food', fi: 'Ruoka', se: 'Mat' },
+      value: 625,
+      width: '25%',
+    },
+    {
+      color: 'yellow',
+      icon: 'test-icon-tuotteet-ja-palvelut.svg',
+      name: {
+        en: 'Things and purchases',
+        fi: 'Tavarat ja hankinnat',
+        se: 'Varor och inköp',
+      },
+      value: 625,
+      width: '25%',
+    },
+  ];
 
   constructor(
     @Inject(PLATFORM_ID) private platformId: any,
@@ -158,6 +196,10 @@ export class ResultComponent implements OnInit {
         this.parseTips();
         this.constructMetaTags();
         this.parseShareUrls();
+
+        setTimeout(() => {
+          this.focusTitle();
+        }, 0);
       });
   }
 
@@ -274,6 +316,15 @@ export class ResultComponent implements OnInit {
         });
       }
     }, this);
+  }
+
+  focusTitle() {
+    if (isPlatformBrowser(this.platformId)) {
+      const focusEl = document.getElementById('result-title');
+      if (focusEl) {
+        focusEl.focus();
+      }
+    }
   }
 
   goToHomePage() {

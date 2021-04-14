@@ -1,22 +1,24 @@
-<div class="" style="padding-bottom: 30px;" [@slide]="animationState">
-  <div class="question__progress">
-    <h4 class="smallcaps">{{ question.index }}/{{ questionCount }}</h4>
+<div style="padding-bottom: 30px;" [@slide]="animationState">
+  <div class="question__progress smallcaps">
+    <span class="screen-reader-text">{{ 'QUESTION' | translate }}</span>
+    {{ question.index }}/{{ questionCount }}
   </div>
-  <div class="question__title">
-    <h2>{{ question.title[translate.currentLang] }}</h2>
-  </div>
-  <div class="focus" id="focus" tabindex="0"></div>
-  <div class="btn-group">
-    <ng-container *ngFor="let answer of question.answers | sortByIndex">
-      <button
-        class="btn-group__btn"
-        type="button"
-        (click)="saveAnswer(answer)"
-        [ngClass]="category.color"
-        [disabled]="answerClicked"
-      >
-        {{ answer.title[translate.currentLang] }}
-      </button>
-    </ng-container>
-  </div>
+  <fieldset>
+    <legend class="question__title">
+      <h1 id="question-title" tabindex="-1">{{ question.title[translate.currentLang] }}</h1>
+    </legend>
+    <div class="btn-group">
+      <ng-container *ngFor="let answer of question.answers | sortByIndex">
+        <button
+          class="btn-group__btn"
+          type="button"
+          (click)="saveAnswer(answer)"
+          [ngClass]="category.color"
+          [disabled]="answerClicked"
+        >
+          {{ answer.title[translate.currentLang] }}
+        </button>
+      </ng-container>
+    </div>
+  </fieldset>
 </div>

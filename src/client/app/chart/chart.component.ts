@@ -9,6 +9,7 @@ import { TranslateService } from '@ngx-translate/core';
 export class ChartComponent implements OnInit, OnChanges {
   @Input() values;
   @Input() minScale;
+  @Input() context: string = '';
   public maxValue: number = 0;
   public currentHover: String;
   public iterations: Array<number>;

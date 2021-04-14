@@ -5,6 +5,7 @@ import {
   Injector,
   OnInit,
   PLATFORM_ID,
+  Renderer2,
 } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { NavigationEnd, NavigationStart, Router } from '@angular/router';
@@ -17,6 +18,7 @@ import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
 })
 export class AppComponent implements OnInit {
   public inIframe = false;
+  public ariaLock = true;
 
   constructor(
     @Inject(PLATFORM_ID) private platformId: any,
@@ -24,6 +26,7 @@ export class AppComponent implements OnInit {
     private injector: Injector,
     private titleService: Title,
     private translate: TranslateService,
+    private renderer: Renderer2,
   ) {
     this.translate.setDefaultLang('fi');
 
@@ -85,6 +88,15 @@ export class AppComponent implements OnInit {
         this.inIframe = false;
       }
     }
+  }
+
+  releaseAriaLock(hasConsent: boolean) {
+    this.ariaLock = !hasConsent;
+
+    // setTimeout() to prevent ExpressionChangedAfterItHasBeenCheckedError
+    setTimeout(() => {
+      this.renderer.selectRootElement('#appTop', true).focus();
+    }, 0);
   }
 
   setTitle() {
